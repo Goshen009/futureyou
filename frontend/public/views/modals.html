@@ -1,0 +1,76 @@
+<!-- Modal backdrop -->
+  <div id="errorModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div class="relative bg-white border-2 border-blue-500 rounded-lg shadow-lg w-full max-w-md mx-4 p-6">
+      <!-- Close button (top right) -->
+      <button type="button" onclick="document.getElementById('errorModal').classList.add('hidden')"
+          class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+  
+        <!-- Error Icon -->
+        <div class="flex justify-center mb-4">
+          <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 9l-6 6m0-6l6 6" />
+          </svg>
+        </div>
+  
+        <!-- Error text -->
+        <p class="text-sm text-gray-800 text-center">
+          An error occurred on our part. Please try again. If it continues, I'd advise you copy your message to a notes app and try again a few hours.
+        </p>
+  
+        <!-- Bottom "Close" button -->
+        <div class="mt-6 text-center">
+          <button type="button" onclick="document.getElementById('errorModal').classList.add('hidden')"
+            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal-style container -->
+    <div id="successScreen" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      <div class="relative bg-white border-2 border-blue-500 rounded-lg shadow-lg w-full max-w-md mx-4 p-6 flex flex-col items-center text-center">
+  
+        <!-- Close button (top right) -->
+        <button type="button" onclick="document.getElementById('successScreen').classList.add('hidden')"
+          class="absolute top-2 right-2 text-gray-400 hover:text-gray-800 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+  
+        <!-- Success Icon -->
+        <svg class="w-12 h-12 text-green-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 12l2 2l4 -4" />
+        </svg>
+  
+        <!-- Message -->
+        <p class="text-gray-800 text-lg font-medium mb-6">
+          Now go smash those goals you little rascal. <br />
+          You'll get your message on <span class="font-semibold text-blue-600">--delivery date--</span>
+        </p>
+  
+        <!-- Action Buttons -->
+        <div class="space-y-3 w-full">
+          <button onclick="/* your logic here */"
+            class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+            Send another message
+          </button>
+  
+          <button onclick="/* your logic here */"
+            class="w-full text-blue-700 bg-white border border-blue-600 hover:bg-blue-50 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+            Ask a friend to send one too
+          </button>
+        </div>
+      </div>
+    </div>

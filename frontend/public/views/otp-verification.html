@@ -1,0 +1,67 @@
+<div class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4">
+  <div v-scope class="bg-white rounded-xl shadow-lg w-full max-w-sm border border-purple-100 p-5" >
+    <div class="space-y-5 text-center max-w-sm mx-auto" @submit.prevent="submit">
+      <p class="text-sm">To make sure you didn't mistype your email, we sent a verification code.</p>
+
+      <span v-if="input_errors.otp" class="text-xs text-red-600 block mb-2">
+        {{ input_errors.otp }}
+      </span>
+      
+      <div v-if="!isLoading" class="flex justify-center space-x-2 rtl:space-x-reverse">
+        <div>
+          <label for="code-1" class="sr-only">First code</label>
+          <input 
+            @keyup="handleKeyup($event)"
+            @paste="handlePaste($event)" type="text" inputmode="numeric" maxlength="1" data-focus-input-init data-focus-input-next="code-2" id="code-1" class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+          <label for="code-2" class="sr-only">Second code</label>
+          <input 
+            @keyup="handleKeyup($event)"
+            @paste="handlePaste($event)" type="text" inputmode="numeric" maxlength="1" data-focus-input-init data-focus-input-prev="code-1" data-focus-input-next="code-3" id="code-2" class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+          <label for="code-3" class="sr-only">Third code</label>
+          <input 
+            @keyup="handleKeyup($event)"
+            @paste="handlePaste($event)" type="text" inputmode="numeric" maxlength="1" data-focus-input-init data-focus-input-prev="code-2" data-focus-input-next="code-4" id="code-3" class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+          <label for="code-4" class="sr-only">Fourth code</label>
+          <input 
+            @keyup="handleKeyup($event)"
+            @paste="handlePaste($event)" type="text" inputmode="numeric" maxlength="1" data-focus-input-init data-focus-input-prev="code-3" data-focus-input-next="code-5" id="code-4" class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+          <label for="code-5" class="sr-only">Fifth code</label>
+          <input 
+            @keyup="handleKeyup($event)"
+            @paste="handlePaste($event)" type="text" inputmode="numeric" maxlength="1" data-focus-input-init data-focus-input-prev="code-4" data-focus-input-next="code-6" id="code-5" class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+        <div>
+          <label for="code-6" class="sr-only">Sixth code</label>
+          <input 
+            @keyup="handleKeyup($event)"
+            @paste="handlePaste($event)" type="text" inputmode="numeric" maxlength="1" data-focus-input-init data-focus-input-prev="code-5" id="code-6" class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required />
+        </div>
+      </div>
+      <template v-else>
+        <span class="loading loading-dots loading-lg"></span>
+      </template>
+
+      <p class="text-sm text-center">
+        <!-- Didn't get the code? -->
+        <button @click="resend_otp" :disabled="resendDisabled" class="ml-1 font-semibold text-purple-600 hover:underline disabled:text-gray-400">
+          <template v-if="resendDisabled">Resend code in {{ timer }}s</template>
+          <template v-else>Resend code</template>
+        </button>
+      </p>
+
+      <p class="text-xs text-gray-500 mt-4">
+        <button type="button" @click="go_back" class="text-purple-900 hover:underline focus:outline-none">
+          Not your email? Go back
+        </button>
+      </p>
+    </div>
+  </div>
+</div>

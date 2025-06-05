@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "flowbite";
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-image: url('/images/fishnets-and-hearts.jpg');
+  background-repeat: repeat;
+  background-color: #fdfdfd;
+}
+
+.handwritten {
+  font-family: 'Comfortaa', cursive;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+.fade-leave {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}

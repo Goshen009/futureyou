@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/combine/npm/daisyui@5/base/reset.css,npm/daisyui@5/base/svg.css,npm/daisyui@5/base/properties.css,npm/daisyui@5/base/rootscrollgutter.css,npm/daisyui@5/base/rootcolor.css,npm/daisyui@5/base/scrollbar.css,npm/daisyui@5/base/rootscrolllock.css,npm/daisyui@5/components/loading.css,npm/daisyui@5/theme/light.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FutureYou</title>
+    
+  </head>
+  
+  <body class="min-h-screen flex items-center justify-center px-4">
+    <div id="app" class="w-full"></div>
+
+    <div id="otp"></div>
+
+    <div id="modal" v-scope>
+      <template v-if="modal.showErrorModal">
+        <div
+          class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4 transition-opacity duration-300"
+          :class="modal.isVisible ? 'opacity-100' : 'opacity-0'"
+          @click.self="modal.close()"
+        >
+          <div class="relative bg-white rounded-xl shadow-lg w-full max-w-sm border border-red-500 p-5 text-center">
+            <div class="flex justify-center mb-4">
+              <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke-width="2" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6m0-6l6 6" />
+              </svg>
+            </div>
+
+            <p class="text-sm text-gray-800 leading-relaxed">
+              An error occurred on our part. Please try again.<br>
+              If it continues, copy your message to a notes app and try again later.
+            </p>
+
+            <div class="mt-6">
+              <button @click="modal.close()" class="w-full bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-300 transition">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+
+       <template v-if="modal.showSuccessModal">
+        <div
+          class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 transition-opacity duration-300"
+          :class="modal.isVisible ? 'opacity-100' : 'opacity-0'"
+          @click.self="modal.close()"
+        >
+          <div class="relative bg-white border border-green-500 rounded-xl shadow-lg max-w-sm w-full mx-4 p-5 flex flex-col items-center text-center">
+            <svg class="w-14 h-14 text-green-600 mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l4 -4" />
+            </svg>
+
+            <p class="text-sm text-gray-800 mb-4 leading-relaxed">
+              Success! Your message has been sent.<br />
+              Expect it to arrive by <span class="font-semibold text-green-600">{{ '25th January, 2025' /*deliveryDate */ }}</span>. Keep up the great work!
+            </p>
+
+            <div class="flex flex-col gap-3 w-full">
+              <button @click="modal.sendAnother()" class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 transition">
+                Send Another Message
+              </button>
+
+              <button @click="modal.askFriend()" class="w-full text-green-700 bg-white border border-green-500 text-green-600 hover:bg-green-50 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 transition">
+                Ask a Friend to Send One Too
+              </button>
+            </div>
+          </div>
+        </div>
+       </template>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

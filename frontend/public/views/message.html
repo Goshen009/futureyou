@@ -1,0 +1,16 @@
+<div v-scope="message" class="border-2 border-blue-500 rounded-lg mx-2 w-full max-w-md bg-white shadow-md relative h-56 overflow-hidden">
+  <form class="h-full" @submit.prevent="submit" @input="save_to_local_storage">
+    <textarea v-model="form_data.message" placeholder="Write your letter" class="w-full h-full resize-none bg-transparent text-gray-900 text-sm focus:outline-none p-0 m-0"></textarea>
+    <span class="text-sm text-red-600 hidden" id="error-message"></span>
+
+    <button type="submit" class="absolute bottom-2 right-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+      Send
+    </button>
+  </form>
+</div>
+
+<div v-scope="message" class="mt-4 text-center">
+  <button @click="back" id="back-button" class="text-gray-700 hover:text-blue-600 font-medium text-sm">
+    ← Back
+  </button>
+</div>

@@ -1,0 +1,60 @@
+<div v-scope class="w-full max-w-xl mx-auto rounded-3xl shadow-2xl bg-white/80 backdrop-blur-lg border border-gray-200 p-8 space-y-6">
+  <form class="w-full space-y-4" @submit.prevent="submit" @input="save_to_local_storage">
+    <div>
+      <label for="name" class="block mb-2 text-sm font-semibold text-gray-700 handwritten">Name</label>
+        <input
+          v-model="user_input.name"
+          @input="input_errors.name = ''"
+          type="text" required id="name"
+          class="bg-white/70 border border-gray-300 text-gray-800 text-sm rounded-xl focus:ring-pink-400 focus:border-pink-400 block w-full p-3"
+          placeholder="Your name"
+        >
+        <span v-if="input_errors.name" class="text-xs text-red-600">{{ input_errors.name }}</span>
+    </div>
+
+    <div>
+      <label for="email" class="block mb-2 text-sm font-semibold text-gray-700 handwritten">Email</label>
+      <input 
+        v-model="user_input.email"
+        @input="input_errors.email = ''"
+        type="email" required id="email"
+        class="bg-white/70 border border-gray-300 text-gray-800 text-sm rounded-xl focus:ring-pink-400 focus:border-pink-400 block w-full p-3"
+        placeholder="you@example.com"
+      />
+      <span v-if="input_errors.email" class="text-xs text-red-600">{{ input_errors.email }}</span>
+    </div>
+
+    <div class="relative">
+      <label for="datetime" class="block mb-2 text-sm font-semibold text-gray-700 handwritten">Delivery Date</label>
+      <div class="bg-white/70 border border-gray-300 text-gray-800 text-sm rounded-xl block w-full p-3">
+        {{ formatted_date || 'Select date' }}
+      </div>
+      <input
+        v-model="user_input.delivery_date"
+        @input="format_date(); input_errors.delivery_date = ''"
+        type="text" id="datetime"
+        class="absolute inset-0 opacity-0 z-10 cursor-pointer w-full h-full"
+      >
+      <span v-if="input_errors.delivery_date" class="text-xs text-red-600 block mt-1">{{ input_errors.delivery_date }}</span>
+    </div>
+    
+    <div>
+      <label for="message" class="block mb-2 text-sm font-semibold text-gray-700 handwritten">Message</label>
+      <textarea 
+        v-model="user_input.message"
+        @input="input_errors.message = ''"
+        required id="message"
+        class="bg-white/70 border border-gray-300 text-gray-800 text-sm rounded-xl focus:ring-pink-400 focus:border-pink-400 block w-full p-3 h-48 resize-none leading-relaxed placeholder-gray-400"
+        placeholder="Write your letter"
+      ></textarea>
+      <span v-if="input_errors.message" class="text-xs text-red-600">{{ input_errors.message }}</span>
+    </div>
+
+    <button :disabled="isLoading" type="submit" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-xl transition shadow-md hover:shadow-lg">
+      <template v-if="!isLoading">SEND</template>
+      <template v-else>
+        <span class="loading loading-dots loading-lg"></span>
+      </template>
+    </button>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<div v-scope="verify" class="border-2 border-blue-500 rounded-lg p-4 w-full max-w-md mx-auto bg-white shadow-md">
+  <form class="w-full space-y-4" @submit.prevent="submit">
+    <p class="text-sm text-gray-700">
+      Just to make sure you didn't misspell your address, we've emailed you a verification code.
+    </p>
+
+    <div class="flex mb-2 space-x-2 rtl:space-x-reverse">
+      <template v-for="(digit, index) in pin">
+        <input
+          :id="'code-' + (index + 1)"
+          type="text"
+          maxlength="1"
+          class="block w-9 h-9 py-3 text-sm font-extrabold text-center text-gray-900 bg-white border border-gray-300 rounded-lg"
+          v-model="pin[index]"
+          @input="moveFocus(index)"
+          @paste="handlePaste($event)"
+        />
+      </template>
+      <span v-if="input_errors.otp" class="text-sm text-red-600">{{ input_errors.otp }}</span>
+      
+      <div class="text-xs text-gray-600 text-center sm:text-left">
+        <div>Resend OTP in <span class="font-medium">30</span> seconds</div>
+        <div class="mt-1"><span class="font-medium">3</span> attempts remaining</div>
+      </div>
+    </div>
+
+    <div class="text-right">
+      <button type="submit" 
+        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">
+        Verify
+      </button>
+    </div>
+  </form>
+</div>

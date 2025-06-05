@@ -1,0 +1,33 @@
+[package]
+name = "futureyou"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.3"
+http = "1.0.0"
+rand = "0.9.1"
+svix = "1.20.0"
+tower = "0.5.2"
+dashmap = "6.1.0"
+chrono = "0.4.41"
+mongodb = "3.2.3"
+futures = "0.3.31"
+dotenvy = "0.15.7"
+serde_json = "1.0"
+thiserror = "2.0.12"
+resend-rs = "0.14.1"
+axum-extra = "0.10.1"
+axum-macros = "0.5.0"
+jsonwebtoken = "9.3.1"
+uuid = { version = "1.16.0", features = ["v7"] }
+serde = { version = "1.0", features = ["derive"] }
+bson = { version = "2", features = ["chrono-0_4"] }
+tokio = { version = "1.44.2", features = ["full"] }
+reqwest = { version = "0.12", features = ["json"] }
+validator = { version = "0.20", features = ["derive"] }
+tower-http = { version = "0.6.2", features = ["cors", "trace"] }
+redis = { version = "0.31.0", features = ["tokio-comp", "tokio-native-tls-comp"] }
+
+tracing = { version = "0.1.41", features = ["log"] }
+tracing-subscriber = { version = "0.3.19", features = ["registry", "env-filter", "fmt"] }
