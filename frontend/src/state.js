@@ -4,7 +4,7 @@ const isLocal = window.location.hostname === 'localhost';
 
 export const API_BASE_URL = isLocal
   ? 'http://localhost:8080'
-  : 'https://axum-rust.onrender.com';
+  : 'https://futureyou.onrender.com';
 
 
 export const STORAGE_KEY = 'future-me-form';
