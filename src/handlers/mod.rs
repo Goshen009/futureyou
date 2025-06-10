@@ -16,8 +16,9 @@ pub fn get_routes() -> Router<AppState> {
         .route("/resend/webhook/delivered", post(delivered_webhook))
 }
 
-pub async fn ping() {
+pub async fn ping() -> StatusCode{
     println!("Pinged!");
+    StatusCode::OK
 }
 
 #[derive(Serialize, Deserialize, Validate)]
